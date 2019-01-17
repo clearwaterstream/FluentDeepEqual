@@ -6,8 +6,7 @@ using System.Text;
 
 namespace FluentDeepEqual
 {
-    public class IdenticalnessValidator<TProperty> : PropertyValidator
-        where TProperty : IComparable<TProperty>, IComparable
+    public class IdenticalnessValidator : PropertyValidator
     {
         static IdenticalnessValidator()
         {
@@ -23,9 +22,9 @@ namespace FluentDeepEqual
         {
             object source = context.ParentContext.RootContextData["comparison_source"];
 
-            var referenceVal = (TProperty)context.Rule.PropertyFunc(source);
+            var referenceVal = (IComparable)context.Rule.PropertyFunc(source);
 
-            var compareWith = (TProperty)context.PropertyValue;
+            var compareWith = (IComparable)context.PropertyValue;
 
             bool success = false;
 

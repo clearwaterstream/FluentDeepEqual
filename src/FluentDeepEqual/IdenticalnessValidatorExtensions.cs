@@ -10,7 +10,15 @@ namespace FluentDeepEqual
         public static IRuleBuilderOptions<T, TProperty> Identical<T, TProperty>(this IRuleBuilder<T, TProperty> ruleBuilder)
             where TProperty : IComparable<TProperty>, IComparable
         {
-            var validator = new IdenticalnessValidator<TProperty>();
+            var validator = new IdenticalnessValidator();
+
+            return ruleBuilder.SetValidator(validator);
+        }
+
+        public static IRuleBuilderOptions<T, TProperty?> Identical<T, TProperty>(this IRuleBuilder<T, TProperty?> ruleBuilder)
+            where TProperty : struct, IComparable<TProperty>, IComparable
+        {
+            var validator = new IdenticalnessValidator();
 
             return ruleBuilder.SetValidator(validator);
         }
