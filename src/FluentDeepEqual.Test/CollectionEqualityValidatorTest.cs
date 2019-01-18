@@ -23,7 +23,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Joanne",
-                        Score = 61
+                        GPA = 61
                     }
                 }
             };
@@ -40,7 +40,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Joanne",
-                        Score = 61
+                        GPA = 61
                     }
                 }
             };
@@ -65,7 +65,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Joanne",
-                        Score = 61
+                        GPA = 61
                     }
                 }
             };
@@ -102,7 +102,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Joanne",
-                        Score = 61
+                        GPA = 61
                     }
                 }
             };
@@ -119,7 +119,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Suzanne",
-                        Score = 61
+                        GPA = 61
                     }
                 }
             };
@@ -144,7 +144,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Joanne",
-                        Score = 61
+                        GPA = 61
                     }
                 }
             };
@@ -161,7 +161,7 @@ namespace FluentDeepEqual.Test
                     new Student
                     {
                         Name = "Joanne",
-                        Score = 62
+                        GPA = 62
                     }
                 }
             };

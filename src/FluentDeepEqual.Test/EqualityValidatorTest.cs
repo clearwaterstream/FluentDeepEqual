@@ -15,13 +15,13 @@ namespace FluentDeepEqual.Test
             var s1 = new Student()
             {
                 Name = "Frank",
-                Score = 67
+                GPA = 67
             };
 
             var s2 = new Student()
             {
                 Name = "Frank",
-                Score = 84
+                GPA = 84
             };
 
 
@@ -34,7 +34,7 @@ namespace FluentDeepEqual.Test
         public StudentComparator()
         {
             RuleFor(x => x.Name).Same();
-            RuleFor(x => x.Score).Same();
+            RuleFor(x => x.GPA).Same();
         }
     }
 }
