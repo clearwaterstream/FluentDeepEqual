@@ -9,26 +9,175 @@ namespace FluentDeepEqual.Test
     public class CollectionEqualityValidatorTest
     {
         [Fact]
-        public void Basic()
+        public void Same()
         {
+            var c1 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    },
+                    new Student
+                    {
+                        Name = "Joanne",
+                        Score = 61
+                    }
+                }
+            };
 
+            var c2 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    },
+                    new Student
+                    {
+                        Name = "Joanne",
+                        Score = 61
+                    }
+                }
+            };
+
+            var comparer = new ClassComparer();
+
+            var r = comparer.Compare(c1, c2);
+        }
+
+        [Fact]
+        public void CollCountMistmatch()
+        {
+            var c1 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    },
+                    new Student
+                    {
+                        Name = "Joanne",
+                        Score = 61
+                    }
+                }
+            };
+
+            var c2 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    }
+                }
+            };
+
+            var comparer = new ClassComparer();
+
+            var r = comparer.Compare(c1, c2);
+        }
+
+        [Fact]
+        public void DiffStudents()
+        {
+            var c1 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    },
+                    new Student
+                    {
+                        Name = "Joanne",
+                        Score = 61
+                    }
+                }
+            };
+
+            var c2 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Alex"
+                    },
+                    new Student
+                    {
+                        Name = "Suzanne",
+                        Score = 61
+                    }
+                }
+            };
+
+            var comparer = new ClassComparer();
+
+            var r = comparer.Compare(c1, c2);
+        }
+
+        [Fact]
+        public void DiffValuesInStudents()
+        {
+            var c1 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    },
+                    new Student
+                    {
+                        Name = "Joanne",
+                        Score = 61
+                    }
+                }
+            };
+
+            var c2 = new Class()
+            {
+                Subject = "Math",
+                AttendingStudents = new List<Student>
+                {
+                    new Student()
+                    {
+                        Name = "Joe"
+                    },
+                    new Student
+                    {
+                        Name = "Joanne",
+                        Score = 62
+                    }
+                }
+            };
+
+            var comparer = new ClassComparer();
+
+            var r = comparer.Compare(c1, c2);
         }
     }
 
-    class StudentsComparator : CollectionEqualityValidator<Student, string>
+    class ClassComparer : EqualityValidator<Class>
     {
-        public StudentsComparator() : base(x => x.Name)
+        public ClassComparer()
         {
-            RuleFor(x => x.Name).Identical();
-            RuleFor(x => x.Score).Identical();
-        }
-    }
-
-    class ClassComparator : EqualityValidator<Class>
-    {
-        public ClassComparator()
-        {
-            RuleFor(x => x.Subject).Identical();
+            RuleFor(x => x.Subject).Same();
+            RuleForCollection(x => x.AttendingStudents, s => s.Name).SetValidator(new StudentComparator());
         }
     }
 }

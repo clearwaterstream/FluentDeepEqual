@@ -33,8 +33,8 @@ namespace FluentDeepEqual.Test
     {
         public StudentComparator()
         {
-            RuleFor(x => x.Name).Identical();
-            RuleFor(x => x.Score).Identical();
+            RuleFor(x => x.Name).Same();
+            RuleFor(x => x.Score).Same();
         }
     }
 }

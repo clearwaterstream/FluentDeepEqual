@@ -32,12 +32,8 @@ namespace FluentDeepEqual
             {
                 success = true;
             }
-            else if (referenceVal != null && compareWith == null)
-            {
-                success = false;
-            }
-            else
-            {
+            else if(referenceVal != null && compareWith != null){
+
                 success = referenceVal.CompareTo(compareWith) == 0;
             }
 
