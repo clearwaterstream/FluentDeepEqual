@@ -49,7 +49,7 @@ namespace FluentDeepEqual
 
                 result = new ValidationResult();
 
-                var msg = ValidatorOptions.LanguageManager.GetString("deep-eq-null");
+                var msg = ValidatorOptions.LanguageManager.GetString("_FDE_Null");
 
                 result.Errors.Add(new ValidationFailure(propName, msg));
 
@@ -59,7 +59,7 @@ namespace FluentDeepEqual
             {
                 result = new ValidationResult();
 
-                var msg = ValidatorOptions.LanguageManager.GetString("deep-eq-coll-count-mismatch");
+                var msg = ValidatorOptions.LanguageManager.GetString("_FDE_CollCountMismatch");
 
                 result.Errors.Add(new ValidationFailure("$count", msg));
 
@@ -89,7 +89,7 @@ namespace FluentDeepEqual
                 {
                     var validationContext = new ValidationContext<T>(matchingValue);
 
-                    validationContext.RootContextData["comparison_source"] = item;
+                    validationContext.RootContextData["_FDE_ComparisonSource"] = item;
 
                     var resultPartial = Validate(validationContext);
 
@@ -100,7 +100,7 @@ namespace FluentDeepEqual
                 }
                 else
                 {
-                    var msg = ValidatorOptions.LanguageManager.GetString("deep-eq-coll-item-not-found");
+                    var msg = ValidatorOptions.LanguageManager.GetString("_FDE_ItemNotFoundInColl");
 
                     errors.Add(new ValidationFailure(_keyMemberName, msg, keyValue));
                 }

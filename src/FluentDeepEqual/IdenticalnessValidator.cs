@@ -20,7 +20,7 @@ namespace FluentDeepEqual
 
         protected override bool IsValid(PropertyValidatorContext context)
         {
-            object source = context.ParentContext.RootContextData["comparison_source"];
+            object source = context.ParentContext.RootContextData["_FDE_ComparisonSource"];
 
             var referenceVal = (IComparable)context.Rule.PropertyFunc(source);
 

@@ -25,7 +25,7 @@ namespace FluentDeepEqual
 
                 var result = new ValidationResult();
 
-                var msg = ValidatorOptions.LanguageManager.GetString("deep-eq-null");
+                var msg = ValidatorOptions.LanguageManager.GetString("_FDE_Null");
 
                 result.Errors.Add(new ValidationFailure(propName, msg));
 
@@ -33,7 +33,7 @@ namespace FluentDeepEqual
             }
 
             var validationContext = new ValidationContext<T>(other);
-            validationContext.RootContextData["comparison_source"] = reference;
+            validationContext.RootContextData["_FDE_ComparisonSource"] = reference;
 
             return Validate(validationContext);
         }

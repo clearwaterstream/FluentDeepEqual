@@ -14,9 +14,9 @@ namespace FluentDeepEqual
             {
                 var langMgr = (LanguageManager)ValidatorOptions.LanguageManager;
 
-                langMgr.AddTranslation("en", "deep-eq-null", "Value is null. No point doing a deeper comparison.");
-                langMgr.AddTranslation("en", "deep-eq-coll-count-mismatch", "The number of items in the two collections does not match. No point doing a deeper comparison.");
-                langMgr.AddTranslation("en", "deep-eq-coll-item-not-found", "Could not find this item in other collection.");
+                langMgr.AddTranslation("en", "_FDE_Null", "Value is null. No point doing a deeper comparison.");
+                langMgr.AddTranslation("en", "_FDE_CollCountMismatch", "The number of items in the two collections does not match. No point doing a deeper comparison.");
+                langMgr.AddTranslation("en", "_FDE_ItemNotFoundInColl", "Could not find this item in other collection.");
             }
         }
 
